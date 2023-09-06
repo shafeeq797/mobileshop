@@ -9,7 +9,6 @@ class useraccount_tbl(models.Model):
         db_table="useraccount_tbl"
 class user_tbl(models.Model):
      username=models.CharField(max_length=500)
-     password=models.CharField(max_length=500)
      firstname=models.CharField(max_length=500)
      lastname=models.CharField(max_length=500)
      gender=models.CharField(max_length=500)
@@ -24,7 +23,6 @@ class seller_tbl(models.Model):
     firstname=models.CharField(max_length=500)
     lastname=models.CharField(max_length=500)
     username=models.CharField(max_length=500)
-    password=models.CharField(max_length=500)
     gender=models.CharField(max_length=500)
     email=models.CharField(max_length=500)
     phone=models.IntegerField()
@@ -45,7 +43,6 @@ class staff_tbl(models.Model):
     district=models.CharField(max_length=500)
     photo=models.CharField(max_length=500)
     username=models.CharField(max_length=500)
-    password=models.CharField(max_length=500)
     class Meta:
         db_table="staff_tbl"
 
