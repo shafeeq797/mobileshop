@@ -8,8 +8,8 @@ from app1.models import useraccount_tbl,user_tbl,seller_tbl,staff_tbl
 from django.core.files.storage import FileSystemStorage
 
 def index(request):
-    # return render(request,'index.html')
-    return render(request,'staff.html')
+    return render(request,'index.html')
+    # return render(request,'staff.html')
 def create(request):
     return render(request,'createaccount.html')
 def createacc(request):
