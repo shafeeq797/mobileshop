@@ -8,8 +8,8 @@ from app1.models import useraccount_tbl,user_tbl,seller_tbl,staff_tbl
 from django.core.files.storage import FileSystemStorage
 
 def index(request):
-    # return render(request,'index.html')
-    return render(request,'staff.html')
+    return render(request,'index.html')
+    # return render(request,'staff.html')
 def create(request):
     return render(request,'createaccount.html')
 def createacc(request):
@@ -31,6 +31,17 @@ def login(request):
     return render(request,'login.html')
 def user(request):
     return render(request,'user.html')
+def login1(request):
+    uname=request.POST.get('username')
+    pwd=request.POST.get('password')
+    data=authenticate(username=uname,password=pwd)
+    request.session['username']=uname
+    if data is not None and data.is_superuser==1:
+        return redirect('/admin1/')
+    elif data is not None and data.is_superuser==0:
+        return redirect('/user1/')
+    else:
+        return HttpResponse('invaliduser')
 def adduser(request):
     u=user_tbl()
     u.username=request.POST.get('username')
@@ -87,6 +98,12 @@ def addstaff(request):
     st.photo=fileurl
     st.save()
     return redirect('/')
+def admin1(request):
+    return render(request,'admin.html')
+def user1(request):
+    return render(request,'user.html')
+
+
 
 
 

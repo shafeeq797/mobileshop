@@ -30,4 +30,7 @@ urlpatterns = [
     path('adduser/',views.adduser),
     path('addseller/',views.addseller),
     path('addstaff/',views.addstaff),
+    path('login1/',views.login1),
+    path('admin1/',views.admin1),
+    path('user1/',views.user1),
 ]
