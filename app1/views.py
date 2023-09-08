@@ -14,18 +14,38 @@ def create(request):
     return render(request,'createaccount.html')
 def createacc(request):
     a=User()
+    b=useraccount_tbl()
+    u=user_tbl()
     a.first_name=request.POST.get('firstname')
     a.username=request.POST.get('username')
     password=request.POST.get('password')
     a.set_password(password)
     a.email=request.POST.get('email')
-    b=useraccount_tbl()
+    
     b.username=request.POST.get('username')
     b.firstname=request.POST.get('firstname')
     b.email=request.POST.get('email')
-    b.phone=request.POST.get('Phone')
+    b.phone=request.POST.get('phone')
+    b.accounttype="user"
+   
+    u.username=request.POST.get('username')
+    u.firstname=request.POST.get('firstname')
+    u.lastname=request.POST.get('lastname')
+    u.gender=request.POST.get('gender')
+    u.email=request.POST.get('email')
+    u.phone=request.POST.get('phone')
+    u.district=request.POST.get('district')
+    u.address=request.POST.get('address')
+    u.photo=request.POST.get('photo')
+    c=request.FILES['photo']
+    fs=FileSystemStorage()
+    d=fs.save(c.name,c)
+    fileurl=fs.url(d)
+    u.photo=fileurl
+   
     a.save()
     b.save()
+    u.save()
     return redirect('/')
 def login(request):
     return render(request,'login.html')
