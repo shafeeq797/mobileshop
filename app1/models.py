@@ -24,6 +24,7 @@ class seller_tbl(models.Model):
     lastname=models.CharField(max_length=500)
     username=models.CharField(max_length=500)
     gender=models.CharField(max_length=500)
+    age=models.IntegerField()
     email=models.CharField(max_length=500)
     phone=models.IntegerField()
     address=models.CharField(max_length=500)

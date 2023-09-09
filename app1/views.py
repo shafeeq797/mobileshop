@@ -8,7 +8,7 @@ from app1.models import useraccount_tbl,user_tbl,seller_tbl,staff_tbl
 from django.core.files.storage import FileSystemStorage
 
 def index(request):
-    return render(request,'index.html')
+    return render(request,'admin.html')
     # return render(request,'staff.html')
 def create(request):
     return render(request,'createaccount.html')
@@ -122,6 +122,22 @@ def admin1(request):
     return render(request,'admin.html')
 def user1(request):
     return render(request,'user.html')
+def addseller1(request):
+    return render(request,'seller.html')
+def viewseller1(request):
+    a=seller_tbl.objects.all()
+    return render(request,'viewseller.html',{'b':a})
+def removeseller1(request,id):
+    a=seller_tbl.objects.get(id=id)
+    a.delete()
+    return redirect('/viewseller/')
+def updateseller(request):
+    a=seller_tbl.objects.all()
+    return render(request,'viewseller.html',{'b':a})
+def updateseller2(request,id):
+    a=seller_tbl.objects.get(id=id)
+    return render(request,'updateseller.html',{'x':a})
+
 
 
 
